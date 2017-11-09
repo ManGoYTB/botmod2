@@ -538,9 +538,6 @@ class Modmail(commands.Bot):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    def _member_has_role(self, member: discord.Member, role: discord.Role):
-        return role in member.roles
-
     def _get_users_with_role(self, server: discord.Server,
                              role: discord.Role) -> List[discord.User]:
         roled = []
