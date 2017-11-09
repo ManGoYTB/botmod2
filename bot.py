@@ -433,7 +433,7 @@ class Subs:
         emoji = self.fix_custom_emoji(emoji)
         await self.create_smart_reaction(server, word, emoji, message)
 
-    @checks.is_owner()		
+    @commands.has_permissions(administrator=True)
     @commands.command(name="delreact", no_pm=True, pass_context=True)
     async def delreact(self, ctx, word, emoji):
         """Delete an auto reaction to a word"""
