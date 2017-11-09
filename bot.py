@@ -27,7 +27,6 @@ import datetime
 import glob
 import os
 import aiohttp
-from .check import checks
 
 class Modmail(commands.Bot):
     def __init__(self):
