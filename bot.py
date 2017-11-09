@@ -429,7 +429,7 @@ class Modmail(commands.Bot):
         else:
             await ctx.send('User is not already blocked.')
                 
-	class Subs:
+class Subs:
 
     """Create automatic reactions when trigger words are typed in chat"""
 
