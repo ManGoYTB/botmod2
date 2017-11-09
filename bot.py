@@ -535,9 +535,8 @@ class Modmail(commands.Bot):
         embed.add_field(name="🇮🇹👈👇", value="🔥**https://support.discordapp.com/hc/it**🔥", inline=False)
         await self.bot.send_message(discord.Object(ctx.message.channel.id), embed=embed)
 		
-    @commands.command(no_pm=True, pass_context=True, name="massdm",
-                      aliases=["mdm"])
-    @checks.mod_or_permissions(administrator=True)
+    @commands.command(pass_context=True)
+    @commands.has_permissions(administrator=True)
     async def _mdm(self, ctx: commands.Context,
                    role: discord.Role, *, message: str):
         """Sends a DM to all Members with the given Role.
