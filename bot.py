@@ -369,7 +369,7 @@ class Modmail(commands.Bot):
         '''Set a custom playing status for the bot.'''
         if message == 'clear':
             return await self.change_presence(game=None)
-        await self.change_presence(game = discord.Game(type=1, url=https://twitch.tv/mageclann, name=message))
+        await self.change_presence(game=discord.Game(name=message), status=discord.Status.idle)
         await ctx.send(f"Changed status to **{message}**")
 
     @commands.command()
@@ -413,6 +413,29 @@ class Modmail(commands.Bot):
             await ctx.send('User successfully unblocked!')
         else:
             await ctx.send('User is not already blocked.')
+    @commands.command()
+    @commands.has_permissions(administrator=True)
+    async def stream(self, ctx, streamer=None, *, stream_title=None):
+        """Sets Red's streaming status
+
+        Leaving both streamer and stream_title empty will clear it."""
+
+        current_status = server.me.status if server is not None else None
+
+        if stream_title:
+            stream_title = stream_title.strip()
+            if "twitch.tv/" not in streamer:
+                streamer = "https://www.twitch.tv/" + streamer
+            game = discord.Game(type=1, url=streamer, name=stream_title)
+            await self.bot.change_presence(game=game, status=current_status)
+            log.debug('Owner has set streaming status and url to "{}" and {}'.format(stream_title, streamer))
+        elif streamer is not None:
+            await self.bot.send_cmd_help(ctx)
+            return
+        else:
+            await self.bot.change_presence(game=None, status=current_status)
+            log.debug('stream cleared by owner')
+        await self.bot.say("Done.")
 				
 if __name__ == '__main__':
     Modmail.init()
