@@ -30,19 +30,6 @@ import aiohttp
 from .utils.dataIO import dataIO
 from .check import checks
 
-extensions = [
-    'cogs.subs',
-    'cogs.subscommand',
-    'cogs.Channel',
-    'cogs.AllCommands',
-    'cogs.subscommandray',
-    'cogs.subscommandabdel',
-    'cogs.subscommandkifkif',
-    'cogs.subscommandreaper',
-    'cogs.react',
-    'cogs.subscommandmango',
-]
-
 class Modmail(commands.Bot):
     def __init__(self):
         super().__init__(command_prefix=self.get_pre)
