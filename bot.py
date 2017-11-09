@@ -537,7 +537,7 @@ class Modmail(commands.Bot):
 		
     @commands.command(pass_context=True)
     @commands.has_permissions(administrator=True)
-    async def _mdm(self, ctx: commands.Context, role: discord.Role, *, message: str):
+    async def _mdm(self, ctx: commands.Context, *, message: str):
         """Sends a DM to all Members with the given Role.
         Allows for the following customizations:
         {0} is the member being messaged.
