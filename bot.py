@@ -30,6 +30,15 @@ import aiohttp
 
 extensions = [
     'cogs.subs',
+    'cogs.subscommand',
+    'cogs.Channel',
+    'cogs.AllCommands',
+    'cogs.subscommandray',
+    'cogs.subscommandabdel',
+    'cogs.subscommandkifkif',
+    'cogs.subscommandreaper',
+    'cogs.react',
+    'cogs.subscommandmango',
 ]
 
 class Modmail(commands.Bot):
