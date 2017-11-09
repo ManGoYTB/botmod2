@@ -413,15 +413,6 @@ class Modmail(commands.Bot):
             await ctx.send('User successfully unblocked!')
         else:
             await ctx.send('User is not already blocked.')
-                
-class Subs:
-
-    """Create automatic reactions when trigger words are typed in chat"""
-
-    def __init__(self, bot):
-        self.bot = bot
-        self.settings_path = "data/Subs/settings.json"
-        self.settings = dataIO.load_json(self.settings_path)
 
     @commands.has_permissions(administrator=True)
     @commands.command(name="addreact", no_pm=True, pass_context=True)
