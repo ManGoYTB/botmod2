@@ -33,7 +33,6 @@ class Modmail(commands.Bot):
         super().__init__(command_prefix=self.get_pre)
         self.uptime = datetime.datetime.utcnow()
         self._add_commands()
-
         def __init__(self, bot: commands.Bot):
         self.bot = bot
 
