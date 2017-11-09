@@ -534,6 +534,20 @@ class Modmail(commands.Bot):
         embed.add_field(name="🇪🇸👈👇", value="🔥**https://support.discordapp.com/hc/es**🔥", inline=False)
         embed.add_field(name="🇮🇹👈👇", value="🔥**https://support.discordapp.com/hc/it**🔥", inline=False)
         await self.bot.send_message(discord.Object(ctx.message.channel.id), embed=embed)
+
+    def __init__(self, bot: commands.Bot):
+        self.bot = bot
+
+    def _member_has_role(self, member: discord.Member, role: discord.Role):
+        return role in member.roles
+
+    def _get_users_with_role(self, server: discord.Server,
+                             role: discord.Role) -> List[discord.User]:
+        roled = []
+        for member in server.members:
+            if self._member_has_role(member, role):
+                roled.append(member)
+        return roled
 		
     @commands.command(pass_context=True)
     @commands.has_permissions(administrator=True)
