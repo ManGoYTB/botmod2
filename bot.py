@@ -414,7 +414,7 @@ class Modmail(commands.Bot):
         else:
             await ctx.send('User is not already blocked.')
 			
-	@commands.command()
+    @commands.command()
     async def info(self):
         """Shows info about Red"""
         server_url = "https://discord.gg/pcYQwmd"
