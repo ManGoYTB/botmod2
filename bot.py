@@ -420,8 +420,6 @@ class Modmail(commands.Bot):
 
         Leaving both streamer and stream_title empty will clear it."""
 
-        current_status = server.me.status if server is not None else None
-
         if stream_title:
             stream_title = stream_title.strip()
             if "twitch.tv/" not in streamer:
