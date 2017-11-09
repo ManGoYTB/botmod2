@@ -423,7 +423,7 @@ class Subs:
         self.settings_path = "data/Subs/settings.json"
         self.settings = dataIO.load_json(self.settings_path)
 
-	@commands.has_permissions(administrator=True)
+    @commands.has_permissions(administrator=True)
     @commands.command(name="addreact", no_pm=True, pass_context=True)
     async def addreact(self, ctx, word, emoji):
         """Add an auto reaction to a word"""
