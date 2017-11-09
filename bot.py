@@ -27,7 +27,6 @@ import datetime
 import glob
 import os
 import aiohttp
-from .utils.dataIO import dataIO
 from .check import checks
 
 class Modmail(commands.Bot):
@@ -525,28 +524,6 @@ class Subs:
         for emoji in react_dict:
             if set(w.lower() for w in react_dict[emoji]).intersection(words):
                 await self.bot.add_reaction(message, self.fix_custom_emoji(emoji))
-
-
-def check_folders():
-    folder = "data/Subs"
-    if not os.path.exists(folder):
-        print("Creating {} folder...".format(folder))
-        os.makedirs(folder)
-
-
-def check_files():
-    default = {}
-    if not dataIO.is_valid_json("data/Subs/settings.json"):
-        print("Creating default Subs settings.json...")
-        dataIO.save_json("data/Subs/settings.json", default)
-
-
-def setup(bot):
-    check_folders()
-    check_files()
-    n = Subs(bot)
-    bot.add_cog(n)
-    bot.add_listener(n.msg_listener, "on_message")
 				
 if __name__ == '__main__':
     Modmail.init()
