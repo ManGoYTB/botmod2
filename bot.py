@@ -35,9 +35,6 @@ class Modmail(commands.Bot):
         super().__init__(command_prefix=self.get_pre)
         self.uptime = datetime.datetime.utcnow()
         self._add_commands()
-	
-    def __init__(self, bot):
-        self.bot = bot
 
     def _add_commands(self):
         '''Adds commands automatically'''
@@ -425,14 +422,14 @@ class Modmail(commands.Bot):
         roleObj = discord.utils.find(lambda r: r.name == role, ctx.message.server.roles)
         if not roleObj:
             no = discord.Embed(title="{} is not a valid role".format(role))
-            await self.bot.say(embed=no)
+            await self.say(embed=no)
             return
         if interval < 3:
             interval = 3
         while True:
             colour = ''.join([choice('0123456789ABCDEF') for x in range(6)])
             colour = int(colour, 16)
-            await self.bot.edit_role(ctx.message.server, roleObj, colour=discord.Colour(value=colour))
+            await self.edit_role(ctx.message.server, roleObj, colour=discord.Colour(value=colour))
             await asyncio.sleep(interval)
 	
 if __name__ == '__main__':
