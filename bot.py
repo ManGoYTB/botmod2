@@ -415,9 +415,6 @@ class Modmail(commands.Bot):
             await ctx.send('User successfully unblocked!')
         else:
             await ctx.send('User is not already blocked.')
-				
-if __name__ == '__main__':
-    Modmail.init()
 
 class rainbow(commands.Bot):
     """Rainbows the selected role"""
@@ -445,4 +442,4 @@ class rainbow(commands.Bot):
             await asyncio.sleep(interval)
 	
 if __name__ == '__main__':
-    rainbow.init()
+    Modmail.init()
