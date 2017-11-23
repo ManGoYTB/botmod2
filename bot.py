@@ -419,7 +419,7 @@ class Modmail(commands.Bot):
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def rainbow(self, ctx, interval:float, *, role):
-        roleObj = discord.utils.find(lambda r: r.name == role, ctx.server.roles)
+        roleObj = discord.utils.find(lambda r: r.name == role, ctx.message.guild.roles)
         if not roleObj:
             no = discord.Embed(title="{} is not a valid role".format(role))
             await self.say(embed=no)
@@ -429,7 +429,7 @@ class Modmail(commands.Bot):
         while True:
             colour = ''.join([choice('0123456789ABCDEF') for x in range(6)])
             colour = int(colour, 16)
-            await self.edit_role(ctx.message.server, roleObj, colour=discord.Colour(value=colour))
+            await self.edit_role(ctx.message.guild, roleObj, colour=discord.Colour(value=colour))
             await asyncio.sleep(interval)
 	
 if __name__ == '__main__':
