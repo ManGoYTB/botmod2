@@ -9,6 +9,7 @@ GUILD_ID = 0 # your guild id here
 import discord
 from discord.ext import commands
 from urllib.parse import urlparse
+from random import choice, randint
 import asyncio
 import textwrap
 import datetime
@@ -27,6 +28,7 @@ import datetime
 import glob
 import os
 import aiohttp
+import time
 
 class Modmail(commands.Bot):
     def __init__(self):
