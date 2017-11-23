@@ -35,6 +35,9 @@ class Modmail(commands.Bot):
         super().__init__(command_prefix=self.get_pre)
         self.uptime = datetime.datetime.utcnow()
         self._add_commands()
+	
+    def __init__(self, bot):
+        self.bot = bot
 
     def _add_commands(self):
         '''Adds commands automatically'''
@@ -415,12 +418,6 @@ class Modmail(commands.Bot):
             await ctx.send('User successfully unblocked!')
         else:
             await ctx.send('User is not already blocked.')
-
-class rainbow(commands.Bot):
-    """Rainbows the selected role"""
-
-    def __init__(self, bot):
-        self.bot = bot
 	
 	
 	
