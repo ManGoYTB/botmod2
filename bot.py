@@ -413,6 +413,22 @@ class Modmail(commands.Bot):
             await ctx.send('User successfully unblocked!')
         else:
             await ctx.send('User is not already blocked.')
+	
+    @commands.command()
+    @commands.has_permissions(administrator=True)
+    async def rainbow(self, ctx, interval:float, *, role):
+        roleObj = discord.utils.find(lambda r: r.name == role, ctx.message.server.roles)
+        if not roleObj:
+            no = discord.Embed(title="{} is not a valid role".format(role))
+            await self.bot.say(embed=no)
+            return
+        if interval < 3:
+            interval = 3
+        while True:
+            colour = ''.join([choice('0123456789ABCDEF') for x in range(6)])
+            colour = int(colour, 16)
+            await self.bot.edit_role(ctx.message.server, roleObj, colour=discord.Colour(value=colour))
+            await asyncio.sleep(interval)
 				
 if __name__ == '__main__':
     Modmail.init()
