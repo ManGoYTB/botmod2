@@ -419,7 +419,7 @@ class Modmail(commands.Bot):
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def rainbow(self, ctx, interval:float, *, role):
-        roleObj = discord.utils.find(lambda r: r.name == role, ctx.message.server.roles)
+        roleObj = discord.utils.find(lambda r: r.name == role, ctx.server.roles)
         if not roleObj:
             no = discord.Embed(title="{} is not a valid role".format(role))
             await self.say(embed=no)
