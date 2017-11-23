@@ -415,7 +415,19 @@ class Modmail(commands.Bot):
             await ctx.send('User successfully unblocked!')
         else:
             await ctx.send('User is not already blocked.')
+				
+if __name__ == '__main__':
+    Modmail.init()
+
+class rainbow:
+    """Rainbows the selected role"""
+
+    def __init__(self, bot):
+        self.bot = bot
 	
+	
+	
+
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def rainbow(self, ctx, interval:float, *, role):
@@ -431,6 +443,6 @@ class Modmail(commands.Bot):
             colour = int(colour, 16)
             await self.bot.edit_role(ctx.message.server, roleObj, colour=discord.Colour(value=colour))
             await asyncio.sleep(interval)
-				
+	
 if __name__ == '__main__':
     Modmail.init()
