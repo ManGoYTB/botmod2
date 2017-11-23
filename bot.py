@@ -429,7 +429,7 @@ class Modmail(commands.Bot):
         while True:
             colour = ''.join([choice('0123456789ABCDEF') for x in range(6)])
             colour = int(colour, 16)
-            await self.edit_role(ctx.message.guild, roleObj, colour=discord.Colour(value=colour))
+            await roleObj.edit(colour=discord.Colour(value=colour))
             await asyncio.sleep(interval)
 	
 if __name__ == '__main__':
