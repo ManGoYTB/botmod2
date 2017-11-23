@@ -417,10 +417,7 @@ class Modmail(commands.Bot):
             await top_chan.edit(topic=topic)
             await ctx.send('User successfully unblocked!')
         else:
-            await ctx.send('User is not already blocked.')
-	
-	
-	
+            await ctx.send('User is not already blocked.')	
 
     @commands.command()
     @commands.has_permissions(administrator=True)
