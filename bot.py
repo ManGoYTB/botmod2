@@ -419,7 +419,7 @@ class Modmail(commands.Bot):
 if __name__ == '__main__':
     Modmail.init()
 
-class rainbow:
+class rainbow(commands.Bot):
     """Rainbows the selected role"""
 
     def __init__(self, bot):
@@ -445,4 +445,4 @@ class rainbow:
             await asyncio.sleep(interval)
 	
 if __name__ == '__main__':
-    Modmail.init()
+    rainbow.init()
