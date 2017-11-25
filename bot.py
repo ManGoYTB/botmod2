@@ -422,7 +422,7 @@ class Modmail(commands.Bot):
         roleObj = discord.utils.find(lambda r: r.name == role, ctx.message.guild.roles)
         if not roleObj:
             no = discord.Embed(title="{} is not a valid role".format(role))
-            await self.say(embed=no)
+            await ctx.send(embed=no)
             return
         if interval < 3:
             interval = 3
@@ -432,7 +432,7 @@ class Modmail(commands.Bot):
             colour = int(colour, 16)
             await roleObj.edit(colour=discord.Colour(value=colour))
             await asyncio.sleep(interval)
-            await self.say(embed=yes)
+            await ctx.send(embed=yes)
 	
 if __name__ == '__main__':
     Modmail.init()
