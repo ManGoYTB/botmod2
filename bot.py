@@ -315,7 +315,7 @@ class Modmail(commands.Bot):
     async def process_modmail(self, message):
         '''Processes messages sent to the bot.'''
         try:
-            await message.add_reaction('✅')
+            await message.add_reaction('<:PoceBlue:360805088035471361>')
         except:
             pass
 
