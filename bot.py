@@ -438,74 +438,7 @@ class Modmail(commands.Bot):
     	x = '\n'.join([str(server) for server in client.servers])
     	print(x)
     	embed = discord.Embed(title = "Servers", description = x, color = 0xFFFFF)
-    	return await self.say(embed = embed)
-
-    @commands.command()
-    @commands.has_permissions(administrator=True)
-    async def playing(self, ctx, *gamename):
-        """Sets playing message. Staff only."""
-        try:
-            await self.change_presence(game=discord.Game(name='{}'.format(" ".join(gamename))))
-        except discord.errors.Forbidden:
-            await self.say("💢 I don't have permission to do this.")
-	
-    @commands.command()
-    @commands.has_permissions(administrator=True)
-    async def status(self, ctx, status):
-        """Sets status. Staff only."""
-        try:
-            if status == "online":
-                await self.change_presence(status=discord.Status.online)
-            elif status == "offline":
-                await self.change_presence(status=discord.Status.offline)
-            elif status == "idle":
-                await self.change_presence(status=discord.Status.idle)
-            elif status == "dnd":
-                await self.change_presence(status=discord.Status.dnd)
-            elif status == "invisible":
-                await self.change_presence(status=discord.Status.invisible)
-        except discord.errors.Forbidden:
-            await self.say("💢 I don't have permission to do this.")
-	
-    @commands.command()
-    @commands.has_permissions(administrator=True)
-    async def embed(self, ctx, user):
-        """Restore embed permissios for a user. Staff only."""
-        try:
-            member = ctx.message.mentions[0]
-            await self.remove_restriction(member, "No-Embed")
-            await self.remove_roles(member, self.bot.noembed_role)
-            await self.say("{} can now embed links and attach files again.".format(member.mention))
-            msg = "⭕️ **Restored Embed**: {} restored embed to {} | {}#{}".format(ctx.message.author.mention, member.mention, self.escape_name(member.name), self.bot.escape_name(member.discriminator))
-            await self.send_message(self.bot.modlogs_channel, msg)
-        except discord.errors.Forbidden:
-            await self.say("💢 I don't have permission to do this.")
-	
-    @commands.command()
-    @commands.has_permissions(administrator=True)
-    async def noembed(self, ctx, user, *, reason=""):
-        """Removes embed permissions from a user. Staff only."""
-        try:
-            member = ctx.message.mentions[0]
-            await self.add_restriction(member, "No-Embed")
-            await self.add_roles(member, self.bot.noembed_role)
-            msg_user = "You lost embed and upload permissions!"
-            if reason != "":
-                msg_user += " The given reason is: " + reason
-            msg_user += "\n\nIf you feel this was unjustified, you may appeal in <#270890866820775946>."
-            try:
-                await self.send_message(member, msg_user)
-            except discord.errors.Forbidden:
-                pass  # don't fail in case user has DMs disabled for this server, or blocked the bot
-            await self.say("{} can no longer embed links or attach files.".format(member.mention))
-            msg = "🚫 **Removed Embed**: {} removed embed from {} | {}#{}".format(ctx.message.author.mention, member.mention, self.bot.escape_name(member.name), self.bot.escape_name(member.discriminator))
-            if reason != "":
-                msg += "\n✏️ __Reason__: " + reason
-            else:
-                msg += "\nPlease add an explanation below. In the future, it is recommended to use `.noembed <user> [reason]` as the reason is automatically sent to the user."
-            await self.send_message(self.bot.modlogs_channel, msg)
-        except discord.errors.Forbidden:
-            await self.say("💢 I don't have permission to do this.")	
+    	return await self.say(embed = embed)	
 	
 if __name__ == '__main__':
     Modmail.init()
