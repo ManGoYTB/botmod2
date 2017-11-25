@@ -421,13 +421,11 @@ class Modmail(commands.Bot):
     async def rainbow(self, ctx, interval:float, *, role):
         roleObj = discord.utils.find(lambda r: r.name == role, ctx.message.guild.roles)
         if not roleObj:
-            no = discord.Embed(title="{} is not a valid role".format(role))
+            no = discord.Embed(title="{} is not a valid role."color="0xd209fd".format(role))
             await ctx.send(embed=no)
             return
         if interval < 3:
             interval = 3
-            yes = discord.Embed(title="{} is a valid role ! :tada:".format(role))
-            await ctx.send(embed=yes)
         while True:
             colour = ''.join([choice('0123456789ABCDEF') for x in range(6)])
             colour = int(colour, 16)
