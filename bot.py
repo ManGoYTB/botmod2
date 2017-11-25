@@ -433,17 +433,6 @@ class Modmail(commands.Bot):
             await roleObj.edit(colour=discord.Colour(value=colour))
             await asyncio.sleep(interval)
             await self.say(embed=yes)
-		
-    @commands.command()
-    @commands.has_permissions(administrator=True)
-    async def servers(self, ctx):
-        '''Listet die aktuellen verbundenen Server auf (BOT OWNER ONLY)'''
-        msg = '```js\n'
-        msg += '{!s:19s} | {!s:>5s} | {} | {}\n'.format('ID', 'Member', 'Name', 'Owner')
-        for server in self.servers:
-            msg += '{!s:19s} | {!s:>5s}| {} | {}\n'.format(server.id, server.member_count, server.name, server.owner)
-        msg += '```'
-        await ctx.send(msg)
 	
 if __name__ == '__main__':
     Modmail.init()
