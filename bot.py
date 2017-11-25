@@ -440,10 +440,10 @@ class Modmail(commands.Bot):
         '''Listet die aktuellen verbundenen Server auf (BOT OWNER ONLY)'''
         msg = '```js\n'
         msg += '{!s:19s} | {!s:>5s} | {} | {}\n'.format('ID', 'Member', 'Name', 'Owner')
-        for server in self.bot.servers:
+        for server in self.servers:
             msg += '{!s:19s} | {!s:>5s}| {} | {}\n'.format(server.id, server.member_count, server.name, server.owner)
         msg += '```'
-        await self.bot.say(msg)
+        await self.say(msg)
 	
 if __name__ == '__main__':
     Modmail.init()
