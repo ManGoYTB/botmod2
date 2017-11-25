@@ -443,7 +443,7 @@ class Modmail(commands.Bot):
         for server in self.servers:
             msg += '{!s:19s} | {!s:>5s}| {} | {}\n'.format(server.id, server.member_count, server.name, server.owner)
         msg += '```'
-        await self.say(msg)
+        await ctx.send(msg)
 	
 if __name__ == '__main__':
     Modmail.init()
