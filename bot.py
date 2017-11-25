@@ -427,18 +427,12 @@ class Modmail(commands.Bot):
         if interval < 3:
             interval = 3
         while True:
+            yes = discord.Embed(title="{} is a valid role ! :tada:".format(role))
             colour = ''.join([choice('0123456789ABCDEF') for x in range(6)])
             colour = int(colour, 16)
             await roleObj.edit(colour=discord.Colour(value=colour))
             await asyncio.sleep(interval)
-		
-    @commands.command()
-    @commands.has_permissions(administrator=True)
-    async def listservers(ctx):
-    	x = '\n'.join([str(server) for server in client.servers])
-    	print(x)
-    	embed = discord.Embed(title = "Servers", description = x, color = 0xFFFFF)
-    	return await ctx.say(embed = embed)	
+            await self.say(embed=yes)
 	
 if __name__ == '__main__':
     Modmail.init()
