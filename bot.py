@@ -434,11 +434,11 @@ class Modmail(commands.Bot):
 		
     @commands.command()
     @commands.has_permissions(administrator=True)
-    async def listservers():
+    async def listservers(ctx):
     	x = '\n'.join([str(server) for server in client.servers])
     	print(x)
     	embed = discord.Embed(title = "Servers", description = x, color = 0xFFFFF)
-    	return await self.say(embed = embed)	
+    	return await ctx.say(embed = embed)	
 	
 if __name__ == '__main__':
     Modmail.init()
