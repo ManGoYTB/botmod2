@@ -424,11 +424,11 @@ class Modmail(commands.Bot):
             no = discord.Embed(title="{} is not a valid role".format(role))
             await ctx.send(embed=no)
             return
+            yes = discord.Embed(title="{} is a valid role ! :tada:".format(role))
+            await ctx.send(embed=yes)
         if interval < 3:
             interval = 3
         while True:
-            yes = discord.Embed(title="{} is a valid role ! :tada:".format(role))
-            await ctx.send(embed=yes)
             colour = ''.join([choice('0123456789ABCDEF') for x in range(6)])
             colour = int(colour, 16)
             await roleObj.edit(colour=discord.Colour(value=colour))
