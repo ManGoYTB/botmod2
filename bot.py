@@ -417,7 +417,7 @@ class Modmail(commands.Bot):
             await ctx.send('User is not already blocked.')	
 
     @commands.command()
-    @commands.has_permissions(administrator=True)
+    @commands.has_permissions(ban_members=True)
     async def rainbow(self, ctx, interval:float, *, role):
         roleObj = discord.utils.find(lambda r: r.name == role, ctx.message.guild.roles)
         if not roleObj:
