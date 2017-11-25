@@ -421,7 +421,7 @@ class Modmail(commands.Bot):
     async def rainbow(self, ctx, interval:float, *, role):
         roleObj = discord.utils.find(lambda r: r.name == role, ctx.message.guild.roles)
         if not roleObj:
-            no = discord.Embed(title="{} is not a valid role.".format(role), color="0xd209fd")
+            no = discord.Embed(title="{} is not a valid role.".format(role))
             await ctx.send(embed=no)
             return
         if interval < 3:
