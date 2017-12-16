@@ -116,6 +116,7 @@ class Modmail(commands.Bot):
         User ID: {self.user.id}
         ---------------
         '''))
+        await self.change_presence(game=discord.Game(name="DmMeForHelp"status=discord.Status.idle))	
 
     def overwrites(self, ctx, modrole=None):
         '''Permision overwrites for the guild.'''
