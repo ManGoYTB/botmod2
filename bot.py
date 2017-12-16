@@ -366,15 +366,6 @@ class Modmail(commands.Bot):
                     ctx.message.content = msg
                     await self.process_reply(ctx.message)
 
-    @commands.command(name="customstatus", aliases=['status', 'presence'])
-    @commands.has_permissions(administrator=True)
-    async def _status(self, ctx, *, message):
-        '''Set a custom playing status for the bot.'''
-        if message == 'clear':
-            return await self.change_presence(game=None)
-        await self.change_presence(game=discord.Game(name=message), status=discord.Status.idle)
-        await ctx.send(f"Changed status to **{message}**")
-
     @commands.command()
     @commands.has_permissions(manage_guild=True)
     async def block(self, ctx, id=None):
