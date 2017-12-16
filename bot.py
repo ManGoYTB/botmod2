@@ -106,7 +106,6 @@ class Modmail(commands.Bot):
     async def on_ready(self):
         '''Bot startup, sets uptime.'''
         self.guild = discord.utils.get(self.guilds, id=self.guild_id)
-    await self.change_presence(game=discord.Game(name="DmMeForHelp")
         print(textwrap.dedent(f'''
         ---------------
         Client is ready!
@@ -117,6 +116,7 @@ class Modmail(commands.Bot):
         User ID: {self.user.id}
         ---------------
         '''))
+    await self.change_presence(game=discord.Game(name="DmMeForHelp")	
 
     def overwrites(self, ctx, modrole=None):
         '''Permision overwrites for the guild.'''
