@@ -195,8 +195,8 @@ class Modmail(commands.Bot):
             return await ctx.send('This is not a modmail thread.')
         user_id = int(ctx.channel.topic.split(': ')[1])
         user = self.get_user(user_id)
-        em = discord.Embed(title='Thread Closed')
-        em.description = f'**{ctx.author}** has closed your channel.'
+        em = discord.Embed(title='Fil fermé')
+        em.description = f'**{ctx.author}** a fermé votre chaîne.'
         em.color = discord.Color.red()
         try:
             await user.send(embed=em)
@@ -269,12 +269,12 @@ class Modmail(commands.Bot):
 
         if mod:
             fmt.color=discord.Color.green()
-            fmt.set_author(name=str(author), icon_url=author.avatar_url)
-            fmt.set_footer(text='Moderator')
+            fmt.set_author(name=Moderateur : str(author), icon_url=author.avatar_url)
+            fmt.set_footer(text='Moderateur')
         else:
             fmt.color=discord.Color.gold()
             fmt.set_author(name=str(author), icon_url=author.avatar_url)
-            fmt.set_footer(text='User')
+            fmt.set_footer(text='Utilisateur')
 
         embed = None
 
@@ -306,14 +306,14 @@ class Modmail(commands.Bot):
 
     @property
     def blocked_em(self):
-        em = discord.Embed(title='Message not sent!', color=discord.Color.red())
-        em.description = 'You have been blocked from using modmail.'
+        em = discord.Embed(title='Message non envoyé!', color=discord.Color.red())
+        em.description = 'Vous avez été bloqué d`utiliser Modmail.'
         return em
 
     async def process_modmail(self, message):
         '''Processes messages sent to the bot.'''
         try:
-            await message.add_reaction(':PoceBlue:')
+            await message.add_reaction('<:stafftool:404343043626631179>')
         except:
             pass
 
@@ -329,8 +329,8 @@ class Modmail(commands.Bot):
         if str(message.author.id) in blocked:
             return await message.author.send(embed=self.blocked_em)
 
-        em = discord.Embed(title='Thanks for the message!')
-        em.description = 'The moderation team will get back to you as soon as possible!'
+        em = discord.Embed(title='Merci pour le message!')
+        em.description = 'L`équipe de modération vous répondra dans les plus brefs délais!'
         em.color = discord.Color.green()
 
         if channel is not None:
