@@ -134,22 +134,19 @@ class Modmail(commands.Bot):
 
     def help_embed(self):
         em = discord.Embed(color=0x00FFFF)
-        em.set_author(name='Mod Mail - Help', icon_url=self.user.avatar_url)
+        em.set_author(name='Mod Message - Help', icon_url=self.user.avatar_url)
         em.description = 'This bot is a python implementation by **ManGo**'
                  
 
-        cmds = '`m.setup [modrole] <- (optional)` - Command that sets up the bot.\n' \
-               '`m.reply <message...>` - Sends a message to the current thread\'s recipient.\n' \
-               '`m.close` - Closes the current thread and deletes the channel.\n' \
-               '`m.disable` - Closes all threads and disables modmail for the server.\n' \
-               '`m.customstatus` - Sets the Bot status to whatever you want.'
+        cmds = '`m.setup [modrole] <- (optional)` - Commande qui configure le bot. **Bot Owner Only**\n' \
+               '`m.reply <message...>` - Envoie un message au destinataire du thread en cours.\n' \
+               '`m.close` - Ferme le fil en cours et supprime le canal.\n' \
+               '`m.disable` - Ferme tous les threads et désactive les mails pour le serveur. **Bot Owner Only*\n' \
+               '`m.customstatus` - Définit le statut du Bot sur ce que vous voulez. **Bot Owner Only**'
 
-        warn = 'Do not manually delete the category or channels as it will break the system. ' \
-               'Modifying the channel topic will also break the system.'
         em.add_field(name='Commands', value=cmds)
-        em.add_field(name='Warning', value=warn)
         em.add_field(name='Owner ManGo', value='ManGo#7532')
-        em.set_footer(text='Star the repository to unlock hidden features!')
+        em.set_footer(text='Dm ManGo Pour Avoir Des Aides !')
 
         return em
 
@@ -229,7 +226,7 @@ class Modmail(commands.Bot):
         member = self.guild.get_member(user.id)
         avi = user.avatar_url
         time = datetime.datetime.utcnow()
-        desc = 'Modmail thread started.'
+        desc = 'Un mail à commencé'
         color = 0
 
         if member:
