@@ -142,10 +142,12 @@ class Modmail(commands.Bot):
                '`m.reply <message...>` - Envoie un message au destinataire du thread en cours.\n' \
                '`m.close` - Ferme le fil en cours et supprime le canal.\n' \
                '`m.disable` - Ferme tous les threads et désactive les mails pour le serveur. **Bot Owner Only**\n' \
+               '`m.block` - Bloque les messages de l`utilisateur.(Ban l`utilisateur d`utiliser le bot)\n' \
+               '`m.unblock` - DeBloque les messages de l`utilisateur.(UnBan l`utilisateur d`utiliser le bot)\n' \
                '`m.customstatus` - Définit le statut du Bot sur ce que vous voulez. **Bot Owner Only**'
 
         em.add_field(name='Commands', value=cmds)
-        em.add_field(name='Owner ManGo', value='ManGo')
+        em.add_field(name='Owner ManGo', value='Pour les utilisateurs bloqué les id\'s sont placé dans la descriptions de ce channel.')
         em.set_footer(text='Dm ManGo Pour Avoir Des Aides !')
 
         return em
@@ -154,7 +156,7 @@ class Modmail(commands.Bot):
     @commands.has_permissions(administrator=True)
     async def setup(self, ctx, *, modrole: discord.Role=None):
         '''Sets up a server for modmail'''
-        if discord.utils.get(ctx.guild.categories, name='Mod Mail'):
+        if discord.utils.get(ctx.guild.categories, name='Mod Mail Bot'):
             return await ctx.send('This server is already set up.')
 
         categ = await ctx.guild.create_category(
@@ -163,7 +165,7 @@ class Modmail(commands.Bot):
             )
         await categ.edit(position=0)
         c = await ctx.guild.create_text_channel(name='bot-info', category=categ)
-        await c.edit(topic='Manually add user id\'s to block users.\n\n'
+        await c.edit(topic='Les id\'s des utilisateurs bloqué sont juste ci-dessous\n\n'
                            'Blocked\n-------\n\n')
         await c.send(embed=self.help_embed())
         await ctx.send('Successfully set up server.')
