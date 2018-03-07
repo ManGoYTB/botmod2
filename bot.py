@@ -141,7 +141,7 @@ class Modmail(commands.Bot):
         cmds = '`m.setup [modrole] <- (optional)` - Commande qui configure le bot. **Bot Owner Only**\n' \
                '`m.reply <message...>` - Envoie un message au destinataire du thread en cours.\n' \
                '`m.close` - Ferme le fil en cours et supprime le canal.\n' \
-               '`m.disable` - Ferme tous les threads et désactive les mails pour le serveur. **Bot Owner Only**\n' \
+               '`m.disable` - Ferme tous les threads et désactive les mails pour le serveur. **Bot Owner Only*\n' \
                '`m.customstatus` - Définit le statut du Bot sur ce que vous voulez. **Bot Owner Only**'
 
         em.add_field(name='Commands', value=cmds)
