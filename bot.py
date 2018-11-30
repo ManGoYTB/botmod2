@@ -135,7 +135,7 @@ class Modmail(commands.Bot):
     def help_embed(self):
         em = discord.Embed(color=0x00FFFF)
         em.set_author(name='Mod Message - Help', icon_url=self.user.avatar_url)
-        em.description = 'This bot is a python implementation by **ManGo**'
+        em.description = 'Ce bot est un bot en python par **ManGo**'
                  
 
         cmds = '`m.setup [modrole] <- (optional)` - Commande qui configure le bot. **Bot Owner Only**\n' \
